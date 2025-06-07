@@ -3,7 +3,7 @@ import Link from "next/link";
 const Header: React.FC = () => {
   return (
     <header>
-      <nav className="flex justify-between items-center bg-sky-400 h-[70px] px-8 mb-4">
+      <nav className="flex justify-between items-center text-white font-medium bg-sky-400 h-[70px] px-8 mb-4">
         <a href="#">
           <img src="#" alt="Nii's logo" />
         </a>
