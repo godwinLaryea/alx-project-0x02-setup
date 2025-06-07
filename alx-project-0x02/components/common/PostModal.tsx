@@ -1,9 +1,8 @@
 import React, { FormEvent, useState } from "react";
-import { PostProps, PostModalProps } from "@/interfaces";
+import { CardProps, PostModalProps } from "@/interfaces";
 
-const PostModal: React.FC<PostModalProps> = ({ onClose, onSubmit }) => {
-  const [post, setPost] = useState<PostProps>({
-    id: 0,
+const PostModal: React.FC<PostModalProps> = ({ onClose, onSubmit }: any) => {
+  const [post, setPost] = useState<CardProps>({
     title: "",
     content: "",
   });
@@ -13,7 +12,6 @@ const PostModal: React.FC<PostModalProps> = ({ onClose, onSubmit }) => {
     onSubmit(post);
     onClose();
     setPost({
-      id: 0,
       title: "",
       content: "",
     });
@@ -40,6 +38,17 @@ const PostModal: React.FC<PostModalProps> = ({ onClose, onSubmit }) => {
               value={post.title}
               onChange={handleChange}
               placeholder="Enter title of post"
+              className="w-full px-4 py-2 mb-4 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+          </div>
+          <div>
+            <label htmlFor="image" className="block text-xl text-gray-700 font-semibold mb-2">Upload image</label>
+            <input
+              type="file"
+              accept=".jpeg, .png, .jpg"
+              name="image"
+              id="image"
+              placeholder="Upload image file"
               className="w-full px-4 py-2 mb-4 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
             />
           </div>
