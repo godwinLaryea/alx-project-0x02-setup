@@ -2,23 +2,22 @@ import Header from "@/components/layout/Header";
 import Card from "@/components/common/Card";
 import PostCard from "@/components/common/PostCard";
 import PostModal from "@/components/common/PostModal";
-import { PostProps, PostModalProps } from "@/interfaces";
+import { CardProps } from "@/interfaces";
 import { useState } from "react";
 
-const Home: React.FC<PostProps> = ({ id, title, content }) => {
+const Home: React.FC<CardProps> = ({ title, content }) => {
   const [isModalOpen, setModalOpen] = useState(false);
 
   const [post, setPost] = useState([
     {
-      id: 1,
       title: "Why Next JS?",
       content:
         "One of the primary benefits of Next. js is its ability to improve search engine optimization (SEO) significantly. Through server-side rendering and static site generation, the framework ensures that content is easily accessible and ready to be indexed by search engines.",
     },
   ]);
 
-  const handleAddPost = (newPost: PostProps) => {
-    setPost(prevPosts => [...prevPosts, newPost, ]);
+  const handleAddPost = (newPost: CardProps) => {
+    setPost((prevPosts) => [...prevPosts, newPost]);
   };
 
   return (
@@ -35,8 +34,8 @@ const Home: React.FC<PostProps> = ({ id, title, content }) => {
           </button>
         </div>
         <div className="grid grid-cols-[repeat(auto-fill,_minmax(320px,_1fr))] gap-4">
-          {post.map(({ title, content, id }: PostProps, key: number) => (
-            <PostCard title={title} content={content} id={id} key={key}/>
+          {post.map(({ title, content }: CardProps, index: number) => (
+            <Card title={title} content={content} key={index} />
           ))}
         </div>
       </section>
